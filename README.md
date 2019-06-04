@@ -136,6 +136,14 @@ Please report any issues with the Docker usage with our models, I'll get to it. 
 # Dataset:
 We tested the code above on the [ljspeech dataset](https://keithito.com/LJ-Speech-Dataset/), which has almost 24 hours of labeled single actress voice recording. (further info on the dataset are available in the README file when you download it)
 
+In your dataset or project folder:
+
+> wget https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2
+
+Then unzip the tar.bz2 file:
+
+> tar xjf LJSpeech-1.1.tar.bz2
+
 We are also running current tests on the [new M-AILABS speech dataset](http://www.m-ailabs.bayern/en/the-mailabs-speech-dataset/) which contains more than 700h of speech (more than 80 Gb of data) for more than 10 languages.
 
 After **downloading** the dataset, **extract** the compressed file, and **place the folder inside the cloned repository.**
@@ -152,7 +160,7 @@ Before running the following steps, please make sure you are inside **Tacotron-2
 
 > cd Tacotron-2
 
-Preprocessing can then be started using: 
+Preprocessing can then be started using:
 
 > python preprocess.py
 
@@ -228,4 +236,3 @@ Synthesizing the **waveforms** conditionned on previously synthesized Mel-spectr
 - [Fast Wavenet](https://arxiv.org/pdf/1611.09482.pdf)
 - [r9y9/wavenet_vocoder](https://github.com/r9y9/wavenet_vocoder)
 - [keithito/tacotron](https://github.com/keithito/tacotron)
-

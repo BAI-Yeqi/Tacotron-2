@@ -14,7 +14,9 @@ def preprocess(args, input_folders, out_dir, hparams):
 	os.makedirs(mel_dir, exist_ok=True)
 	os.makedirs(wav_dir, exist_ok=True)
 	os.makedirs(linear_dir, exist_ok=True)
-	metadata = preprocessor.build_from_path(hparams, input_folders, mel_dir, linear_dir, wav_dir, args.n_jobs, tqdm=tqdm)
+	metadata = preprocessor.build_from_path(hparams, input_folders, mel_dir,
+											linear_dir, wav_dir, args.n_jobs,
+											tqdm=tqdm)
 	write_metadata(metadata, out_dir)
 
 def write_metadata(metadata, out_dir):
@@ -25,11 +27,16 @@ def write_metadata(metadata, out_dir):
 	timesteps = sum([int(m[3]) for m in metadata])
 	sr = hparams.sample_rate
 	hours = timesteps / sr / 3600
-	print('Write {} utterances, {} mel frames, {} audio timesteps, ({:.2f} hours)'.format(
-		len(metadata), mel_frames, timesteps, hours))
-	print('Max input length (text chars): {}'.format(max(len(m[5]) for m in metadata)))
-	print('Max mel frames length: {}'.format(max(int(m[4]) for m in metadata)))
-	print('Max audio timesteps length: {}'.format(max(m[3] for m in metadata)))
+	print('Write {} utterances, {} mel frames'.format(
+		len(metadata), mel_frames))
+	print('{} audio timesteps, ({:.2f} hours)'.format(
+		timesteps, hours))
+	print('Max input length (text chars): {}'.format(
+		max(len(m[5]) for m in metadata)))
+	print('Max mel frames length: {}'.format(
+		max(int(m[4]) for m in metadata)))
+	print('Max audio timesteps length: {}'.format(
+		max(m[3] for m in metadata)))
 
 def norm_data(args):
 
